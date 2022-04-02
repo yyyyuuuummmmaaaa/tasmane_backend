@@ -1,0 +1,28 @@
+version: '3'
+services:
+  go:
+    container_name: go
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    tty: true
+    volumes:
+      - ./:/usr/src/go
+    ports:
+      - 3000:3000
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    user: root
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: gopass
+      POSTGRES_DB: godb
+    tty: true
+    restart: always
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - /etc/localtime:/etc/localtime:ro
