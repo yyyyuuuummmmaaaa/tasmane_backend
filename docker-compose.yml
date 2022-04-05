@@ -8,8 +8,11 @@ services:
     tty: true
     volumes:
       - ./:/usr/src/go
+    command: "go run cmd/main.go"
+    # command: "air -c /app/go/base/cmd/.air.toml"
     ports:
       - 3000:3000
+      - 3001:3001
 
   postgres:
     image: postgres

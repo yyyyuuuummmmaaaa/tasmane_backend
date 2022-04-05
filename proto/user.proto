@@ -4,15 +4,42 @@ package user;
 option go_package = "./;protobuf";
 
 service User {
+  rpc RegisterUser (RegisterUserRequest) returns (RegisterUserResponse) {}
   rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
 }
+
 message GetUserRequest {
   string id = 1;
 }
+
 message GetUserResponse {
+	string id = 1;
+  string name = 2;
+  string role = 3;
+  string description = 4;
+  string email = 5;
+  string phone = 6;
+  string team = 7;
+  string created_at = 8;
+  string updated_at = 9;
+  string deleted_at = 10;
+}
+
+message RegisterUserRequest {
   string name = 1;
-  string email = 2;
-  string phone = 3;
-  string org_code = 4;
-  string lisence_number = 5;
+  string role = 2;
+  string description = 3;
+  string email = 4;
+  string phone = 5;
+  string team = 6;
+}
+
+message RegisterUserResponse {
+	string id = 1;
+  string name = 2;
+  string role = 3;
+  string description = 4;
+  string email = 5;
+  string phone = 6;
+  string team = 7;
 }
